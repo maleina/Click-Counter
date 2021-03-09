@@ -22,18 +22,37 @@ class ViewController: UIViewController {
         view.addSubview(label)
         self.label = label
         
-        // Create button
+        // Create increment button
         let button = UIButton()
         button.frame = CGRect(x: 150, y: 250, width: 60, height: 60)
-        button.setTitle("Click", for: .normal)
+        button.setTitle("+", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         view.addSubview(button)
         
         button.addTarget(self, action: #selector(ViewController.incrementCount), for: UIControl.Event.touchUpInside)
+        
+        // Create increment button
+        let buttonDecr = UIButton()
+        buttonDecr.frame = CGRect(x: 150, y: 350, width: 60, height: 60)
+        buttonDecr.setTitle("-", for: .normal)
+        buttonDecr.setTitleColor(UIColor.blue, for: .normal)
+        view.addSubview(buttonDecr)
+        
+        buttonDecr.addTarget(self, action: #selector(ViewController.decrementCount), for: UIControl.Event.touchUpInside)
     }
 
     @objc func incrementCount() {
         self.count += 1
+        self.label.text = "\(self.count)"
+        if self.count % 2 == 0 {
+            view.backgroundColor = UIColor.white
+        } else {
+            view.backgroundColor = UIColor.yellow
+        }
+    }
+    
+    @objc func decrementCount() {
+        self.count -= 1
         self.label.text = "\(self.count)"
         if self.count % 2 == 0 {
             view.backgroundColor = UIColor.white
