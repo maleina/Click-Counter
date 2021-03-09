@@ -35,6 +35,11 @@ class ViewController: UIViewController {
     @objc func incrementCount() {
         self.count += 1
         self.label.text = "\(self.count)"
+        if self.count % 2 == 0 {
+            view.backgroundColor = UIColor.white
+        } else {
+            view.backgroundColor = UIColor.yellow
+        }
     }
 
 }
